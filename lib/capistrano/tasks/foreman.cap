@@ -6,7 +6,7 @@ namespace :foreman do
       environment_path = fetch(:foreman_env) 
       
       within release_path do
-        as :deployer do
+        as :root do
           execute :bundle, "exec foreman export upstart #{fetch(:export_path)} -a #{fetch(:application)} -u #{host.user} -l #{log_path} -e #{environment_path}"
         end
       end
